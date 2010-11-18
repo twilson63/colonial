@@ -1,0 +1,8 @@
+!!! 5
+%html
+	%head
+		%title= 'Charleston Ruby User Group' + (@title ? ' > ' + @title : '')
+	%body
+		%h1
+			%a{:title => 'Charleston Ruby User Group', :href => '/'} Charleston Ruby User Group
+		= yield

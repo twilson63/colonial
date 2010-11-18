@@ -1,0 +1,9 @@
+%h2 Pages
+- @pages.each do |page|
+	%a{:title => page[1][:title], :href => "/#{page[1][:path]}"}= page[1][:title]
+%h2 People
+- @people.each do |person|
+	%a{:title => person[1][:name], :href => "/people/#{person[1][:path]}"}= person[1][:name]
+%h2 Projects
+- @projects.each do |project|
+	%a{:title => project[1][:name], :href => "/projects/#{project[1][:path]}"}= project[1][:name]
