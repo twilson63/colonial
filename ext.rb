@@ -28,6 +28,8 @@ def parse(file)
   # Guess the format.
   if resp[0] =~ /haml$/
     resp[2] = Haml::Engine.new(resp[2]).render scope # Render the raw data with the scope
+  else
+    resp[2] = ERB.new(resp[2]).result(scope.instance_eval { binding })
   end
   
   resp[1][:path] = File.basename(resp[0]).split('.').first unless resp[1].has_key? :path

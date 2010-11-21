@@ -2,11 +2,9 @@
 
 ## What is it?
 
-This project is our group website, and instead of creating a database driven site that contains people, projects, and pages.  We decided to empower all ruby members to fork this project, add their profiles, links to their projects, etc on their own.  
+This project is our group website, and instead of creating a database driven site that contains people, projects, and pages we decided to empower the group members to fork this project, add their profiles, links to their projects, etc. on their own.
 
-The project is a sinatra application that does the following:
-
-    Template parser that generates pages then serves them through a Sinatra front-end for a small amount of "dynamicity."
+The project is a Sinatra application that parses files in the pages, people, and projects directory and serves them to the client.
 
 It is really easy to create a project, profile or page, but for step by step 
 instructions please see the sections below: 
@@ -17,11 +15,11 @@ instructions please see the sections below:
 
 Make sure you have a recent Ruby and Rubygems installed.
 
-Check out [ruby-lang.org](http://ruby-lang.org) for more details on getting ruby and rubygems installed.
+Check out [ruby-lang.org](http://ruby-lang.org) for more details on getting Ruby and Rubygems installed.
 
 ### Step 2 - Fork and Clone the project
 
-Make sure you have a github account.
+Make sure you have a GitHub account.
 
 Then select fork from the project repository.
 
@@ -41,18 +39,18 @@ Install Bundler and pull required gems
     gem install bundler
     bundle install
 
-Run the application in development mode
+Run the application in development mode either do
 
     rackup
     
-    http://localhost:9292
+and go to http://localhost:9292 in your browser,
 
-or
+or run
 
 
     ruby app.rb -r rubygems
     
-    http://localhost:4567
+and go to http://localhost:4567 in your browser.
 
 ## How do I add my profile?
 
@@ -70,11 +68,11 @@ Then edit that file
 
     vim people/[your nickname].haml
 
-Whether you prefer haml or erb, it is important to put a yaml header on your file, so the system can reconize it and create the link to your page:
+Whether you prefer haml or erb, it is important to put a yaml header on your file, so the system can reconize it and create the link to your page. For people and projects, the header must have an attribute called `name`; for pages, the header must have an attribute called `title`. The `path` attribute is also available to change the URL path to something other than the filename without the extension.
 
     ---
     name: [You full name]
-    path: [name of your file. eg john]
+    path: [Optional; name other than that of your file]
     ---
 
 Then below the header you are welcome to start building your page.
@@ -98,11 +96,11 @@ Next you want to push to your github repository
 
 Lastly, you want to send a pull request.
 
-On you github project page, click the pull request button and type in a message about your profile and account.  Then submit the request.
+On you GitHub project page, click the pull request button and type in a message about your profile and account.  Then submit the request.
 
 You should get a notification from the project maintainer when you changes have been pushed to production.
 
-### Step 3 - Keep your repository in sink with the upstream version
+### Step 3 - Keep your repository in sync with the upstream version
 
 Once you have been notified that your changes have been pushed, simply go to your project directory and run the following:
 
@@ -120,4 +118,3 @@ to the project.
 ## How to contribute?
 
 Fork, change, commit, send pull-request, repeat.
-

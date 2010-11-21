@@ -16,7 +16,7 @@ require 'ext'
 # Reducing the hit on the filesystem.
 people = []
 puts 'Loading People'
-Dir['./people/*.{haml,html}'].each do |file|
+Dir['./people/*.{haml,html,erb}'].each do |file|
   people << parse(file)
   puts "\t+ #{file} -> /people/#{people.last[1][:path]}"
 end
