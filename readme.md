@@ -2,19 +2,120 @@
 
 ## What is it?
 
-Template parser that generates pages then serves them through a Sinatra front-end for a small amount of "dynamicity."
+This project is our group website, and instead of creating a database driven site that contains people, projects, and pages.  We decided to empower all ruby members to fork this project, add their profiles, links to their projects, etc on their own.  
 
-## How to test?
+The project is a sinatra application that does the following:
+
+    Template parser that generates pages then serves them through a Sinatra front-end for a small amount of "dynamicity."
+
+It is really easy to create a project, profile or page, but for step by step 
+instructions please see the sections below: 
+
+## Getting Started
+
+### Step 1 - Install Ruby
 
 Make sure you have a recent Ruby and Rubygems installed.
 
-    gem install sinatra haml
+Check out [ruby-lang.org](http://ruby-lang.org) for more details on getting ruby and rubygems installed.
 
-Then just run:
+### Step 2 - Fork and Clone the project
 
-    ruby app.rb
+Make sure you have a github account.
 
-And go to http://localhost:4567/.
+Then select fork from the project repository.
+
+Then open a terminal and clone your newly forked project
+
+    git clone git@github.com:[your github account]/colonial.git
+
+Setup and fetch upstream repository
+
+    git remote add upstream git://github.com/dirk/colonial.git
+    git fetch upstream
+
+### Step 3 - Install Gems and run app
+
+Install Bundler and pull required gems
+
+    gem install bundler
+    bundle install
+
+Run the application in development mode
+
+    rackup
+    
+    http://localhost:9292
+
+or
+
+
+    ruby app.rb -r rubygems
+    
+    http://localhost:4567
+
+## How do I add my profile?
+
+Follow the steps above to pull the project and setup your development environment.  
+
+### Step 1 - Create Profile page
+
+Next open up a text editor and create a new file for your profile in the people folder.
+
+    touch people/[your nickname].haml
+    
+    touch people/[your nickname].erb
+
+Then edit that file
+
+    vim people/[your nickname].haml
+
+Whether you prefer haml or erb, it is important to put a yaml header on your file, so the system can reconize it and create the link to your page:
+
+    ---
+    name: [You full name]
+    path: [name of your file. eg john]
+    ---
+
+Then below the header you are welcome to start building your page.
+
+You can add your name, picture, projects, twitter, e-mail, etc.  Whatever you want to add is fine as long as it is appropriate and true.
+
+Then run the application and make sure your profile is working and displaying how you like it.
+
+### Step 2 - Send pull request
+
+Ok you have worked on your page and now you are ready to get it up on the production site.
+
+First you want to commit your changes to your local repository.
+
+    git add .
+    git commit -am "added my profile page to charleston ruby"
+
+Next you want to push to your github repository
+
+    git push origin master
+
+Lastly, you want to send a pull request.
+
+On you github project page, click the pull request button and type in a message about your profile and account.  Then submit the request.
+
+You should get a notification from the project maintainer when you changes have been pushed to production.
+
+### Step 3 - Keep your repository in sink with the upstream version
+
+Once you have been notified that your changes have been pushed, simply go to your project directory and run the following:
+
+    git fetch upstream
+    git merge upstream/master
+    git push origin master
+
+This will pull the upstream changes and push them on to your github repository, it is a good idea to do this anytime you want to start another host of changes
+to the project.
+
+## How do I add a project?
+
+## How do I add a page?
 
 ## How to contribute?
 
