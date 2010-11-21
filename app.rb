@@ -8,7 +8,8 @@ require 'haml'
 require 'sinatra'
 
 # Making life easier
-require './ext'
+require 'ext'
+
 
 
 # Pre-compiling (in a sense) all of the people, pages, and projects ahead of time.
@@ -40,11 +41,13 @@ print "Done\n"
 
 puts "\n" # Our reporting is finished; now it's time to let Sinatra take the mic.
 
+before do
+  @pages = pages  
+end
 
 # Essentially serving up static assets out of memory and the filesystem. Only heaving lifting is routing and the views.
 get '/' do
   @people   = people
-  @pages    = pages
   @projects = projects
   haml :index
 end
@@ -68,3 +71,4 @@ get Regexp.new("^/#{pages_match}$", true) do |t|
   @page = pages.select {|p| p[1][:path] === t }.first
   haml :page
 end
+

@@ -1,8 +1,20 @@
 !!! 5
 %html
-	%head
-		%title= 'Charleston Ruby User Group' + (@title ? ' > ' + @title : '')
-	%body
-		%h1
-			%a{:title => 'Charleston Ruby User Group', :href => '/'} Charleston Ruby User Group
-		= yield
+  %head
+    %title= 'Charleston Ruby User Group' + (@title ? ' > ' + @title : '')
+    %link{ :href => '/stylesheets/reset.css', :rel => 'stylesheet' }
+    %link{ :href => '/stylesheets/text.css', :rel => 'stylesheet' }
+    %link{ :href => '/stylesheets/960.css', :rel => 'stylesheet' }
+
+  %body
+    .container_12
+      %a{:title => 'Charleston Ruby User Group', :href => '/'} 
+        %img{:src => '/images/charleston-ruby.gif', :alt => 'Charleston Ruby User Group'}
+      %ul
+        %li
+          %a{:title => 'Home', :href => '/'} Home
+        - @pages.each do |page|
+          %li
+            %a{:title => page[1][:title], :href => "/#{page[1][:path]}"}= page[1][:title]
+
+      = yield
